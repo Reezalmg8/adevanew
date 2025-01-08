@@ -109,7 +109,7 @@ const services: Category[] = [
       {
         name: 'Aromatherapy Consultation',
         image: '/images/consultation.jpg',
-        therapeuticNote: 'Our expert aromatherapists will assess your needs and create custom essential oil blends that support your wellness journey.',
+        therapeuticNote: 'Book a session with our certified IFA aromatherapists to create a bespoke synergy of essential oil blends tailored to your unique needs, enhancing your physical, emotional, and mental well-being.',
        
       },
     ],
