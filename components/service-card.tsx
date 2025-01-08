@@ -12,7 +12,6 @@ interface ServiceCardProps {
   title: string
   description: string
   therapeuticNote: string
-  pricing: { duration: string; member: string; nonMember: string }[]
   isConsultation?: boolean
 }
 
@@ -21,7 +20,6 @@ export function ServiceCard({
   title, 
   description, 
   therapeuticNote,
-  pricing,
   isConsultation = false 
 }: ServiceCardProps) {
   const [isHovered, setIsHovered] = useState(false)
@@ -32,16 +30,16 @@ export function ServiceCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="group bg-white rounded-lg shadow-md overflow-hidden"
+      className="group bg-white rounded-lg shadow-md overflow-hidden w-full max-w-sm"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="relative h-72 overflow-hidden">
+      <div className="relative h-72 overflow-hidden rounded-t-lg">
         <Image
           src={image}
           alt={title}
           fill
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+          className="object-cover object-center w-full h-full transition-transform duration-700 ease-out group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-black/20 transition-opacity duration-300 group-hover:opacity-0" />
       </div>
@@ -64,30 +62,6 @@ export function ServiceCard({
             *{therapeuticNote}
           </p>
         </div>
-        
-        <div className="space-y-3">
-          {pricing.map((option, index) => (
-            <div 
-              key={index}
-              className="flex items-center justify-between p-4 bg-[#F8E3DA] rounded-lg transition-transform duration-300 hover:translate-x-2"
-            >
-              <div className="flex items-center">
-                <Clock className="w-4 h-4 mr-2 text-[#6F5541]" />
-                <span className="text-sm font-medium text-[#6F5541]">
-                  {option.duration}
-                </span>
-              </div>
-              <div className="text-right">
-                <p className="text-sm font-semibold text-[#6F5541]">
-                  Member: {option.member}
-                </p>
-                <p className="text-sm text-[#A99074]">
-                  Non-member: {option.nonMember}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
 
         {isConsultation && (
           <Button 
@@ -107,4 +81,3 @@ export function ServiceCard({
     </motion.div>
   )
 }
-

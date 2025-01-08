@@ -1,11 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from "@/components/ui/button"
-import { Menu, X, PackageIcon, Info, ImageIcon, HelpCircle, Sparkles } from 'lucide-react'
+import { Menu, X, PackageIcon, Info, ImageIcon, HelpCircle, Sparkles, ChevronDown } from 'lucide-react'
 
 const navItems = [
   { 
@@ -13,9 +13,9 @@ const navItems = [
     href: '#',
     icon: Sparkles,
     submenu: [
-      { name: 'Services', href: '/services' },
-      { name: 'Product', href: '/product' },
-  
+      { name: 'Services', href: '/services', description: 'Explore our range of spa services' },
+      { name: 'Product', href: '/product', description: 'Discover our curated selection of products' },
+      { name: 'B2B', href: '/b2b', description: 'Learn about our business solutions' },
     ]
   },
   { name: 'About Us', href: '/about', icon: Info },
@@ -27,6 +27,7 @@ export function EnhancedHeader() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
+  const submenuTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,6 +37,19 @@ export function EnhancedHeader() {
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const handleSubmenuEnter = (itemName: string) => {
+    if (submenuTimeoutRef.current) {
+      clearTimeout(submenuTimeoutRef.current)
+    }
+    setActiveSubmenu(itemName)
+  }
+
+  const handleSubmenuLeave = () => {
+    submenuTimeoutRef.current = setTimeout(() => {
+      setActiveSubmenu(null)
+    }, 300)
+  }
 
   const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href === '#') return
@@ -70,7 +84,7 @@ export function EnhancedHeader() {
                   className="object-cover transition-all duration-300"
                   style={{ 
                     objectFit: 'contain',
-                    transform: 'scale(1.5)',
+                    transform: 'scale(2.0)',
                     transformOrigin: 'left center'
                   }}
                   priority
@@ -88,14 +102,8 @@ export function EnhancedHeader() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 + 0.2 }}
                 className="relative group"
-                onMouseEnter={() => {
-                  if (item.submenu) {
-                    setTimeout(() => setActiveSubmenu(item.name), 100)
-                  }
-                }}
-                onMouseLeave={() => {
-                  setTimeout(() => setActiveSubmenu(null), 300)
-                }}
+                onMouseEnter={() => handleSubmenuEnter(item.name)}
+                onMouseLeave={handleSubmenuLeave}
               >
                 <Link 
                   href={item.href}
@@ -106,25 +114,31 @@ export function EnhancedHeader() {
                 >
                   <item.icon className="w-5 h-5 mr-2" />
                   {item.name}
+                  {item.submenu && (
+                    <ChevronDown className="w-4 h-4 ml-1" />
+                  )}
                   <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#A99074] transform scale-x-0 transition-transform duration-300 origin-left group-hover:scale-x-100" />
                 </Link>
 
-                {/* Submenu */}
+                {/* Redesigned Submenu */}
                 {item.submenu && activeSubmenu === item.name && (
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
-                    transition={{ duration: 0.3, delay: 0.1 }}
-                    className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2"
+                    transition={{ duration: 0.2 }}
+                    className="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg py-4 px-2"
+                    onMouseEnter={() => handleSubmenuEnter(item.name)}
+                    onMouseLeave={handleSubmenuLeave}
                   >
                     {item.submenu.map((subItem) => (
                       <Link
                         key={subItem.name}
                         href={subItem.href}
-                        className="block px-4 py-2 text-[#6F5541] hover:bg-[#F8E3DA] hover:text-[#A99074] transition-colors duration-200"
+                        className="block px-4 py-3 text-[#6F5541] hover:bg-[#F8E3DA] hover:text-[#A99074] transition-colors duration-200 rounded-md"
                       >
-                        {subItem.name}
+                        <div className="font-medium">{subItem.name}</div>
+                        <div className="text-sm text-[#A99074]">{subItem.description}</div>
                       </Link>
                     ))}
                   </motion.div>
@@ -208,6 +222,9 @@ export function EnhancedHeader() {
                         >
                           <item.icon className="w-6 h-6 mr-2" />
                           {item.name}
+                          {item.submenu && (
+                            <ChevronDown className="w-4 h-4 ml-1" />
+                          )}
                         </Link>
                       </motion.div>
                       
@@ -226,7 +243,8 @@ export function EnhancedHeader() {
                               className="block text-[#A99074] hover:text-[#6F5541] py-2"
                               onClick={() => setIsMenuOpen(false)}
                             >
-                              {subItem.name}
+                              <div>{subItem.name}</div>
+                              <div className="text-sm text-[#A99074]">{subItem.description}</div>
                             </Link>
                           ))}
                         </motion.div>

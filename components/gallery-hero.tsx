@@ -7,7 +7,7 @@ export function GalleryHero() {
   return (
     <div className="relative h-[60vh] flex items-center justify-center overflow-hidden">
       <Image
-        src="/images/aipicspa.jpeg"
+        src="/images/gallery2.jpg"
         alt="Gallery hero image"
         layout="fill"
         objectFit="cover"

@@ -16,22 +16,29 @@ const services: Category[] = [
         image: '/images/treatment-3.jpg',
         description: 'Aromatherapy Foot Massage + Himalayan Salt Hot stone + Gua Sha + Thermal Therapy\nSole Synergy Essential Oil Option: Peace of Mind or Sweet Dream',
         therapeuticNote: 'Therapeutic Himalayan salt stones help detoxify and stimulate the body\'s healing process, enhance muscle relaxation, alleviate stress, and boost blood circulation.',
-        pricing: [
-          { duration: '60 minutes', member: 'RM 95', nonMember: 'RM 129' },
-          { duration: '90 minutes', member: 'RM 135', nonMember: 'RM 177' },
-          { duration: '120 minutes', member: 'RM 159', nonMember: 'RM 206' },
-        ],
+       
       },
       {
         name: 'Bespoke Therapy',
         image: '/images/bespoketherapy.png',
         description: 'Aromatherapy Foot Massage, Head, Neck and Shoulder + Gua Sha + Thermal Therapy\nSynergy Essential Oil Option: Peace of Mind or Sweet Dream',
         therapeuticNote: 'Recommended for feet pampering and releasing shoulder tensions.',
-        pricing: [
-          { duration: '90 minutes', member: 'RM 125', nonMember: 'RM 165' },
-          { duration: '120 minutes', member: 'RM 148', nonMember: 'RM 194' },
-        ],
+       
       },
+    ],
+  },
+  {
+    category: 'ADEVA TREATMENTS',
+    
+    items: [
+      {
+        name: 'Indian Head Massage Therapy',
+        image: '/images/headmassage.png',
+        description: ' Head, Neck, Face, and Shoulder Massage + Thermal Therapy Synergy Essential Oil Option: Peace of Mind or Sweet Dream Facial Oil Option: Primrose Evening Oil / Rosehip Oil',
+        therapeuticNote: ' It helps relieve migraines, headaches, insomnia, and fatigue, alleviate stress and tension, stimulate hair growth, detoxify through lymphatic drainage, enhance relaxation, improve overall well-being, and facilitate better rest',
+        
+      },
+      
     ],
   },
   {
@@ -42,102 +49,71 @@ const services: Category[] = [
         image: '/images/adevasignaturebodymsg.png',
         description: 'Whole Body Massage with Synergy Aromatherapy Massage Oil + Thermal Therapy',
         therapeuticNote: 'A fusion of Eastern meridian and Western classical massage techniques for relieving knots and untangling muscles to ease aches and pains.',
-        pricing: [
-          { duration: '90 minutes', member: 'RM 128', nonMember: 'RM 168' },
-          { duration: '120 minutes', member: 'RM 159', nonMember: 'RM 204' },
-        ],
+        
       },
       {
         name: 'Swedish Holistic Body Massage',
         image: '/images/swedishholistic.jpg',
         description: 'Whole Body Relaxation Massage with Synergy Aromatherapy Massage Oil + Thermal Therapy',
         therapeuticNote: 'Classical massage techniques designed to relax tense muscles, increase oxygen flow in the blood, reduce stress and anxiety, and release toxins.',
-        pricing: [
-          { duration: '60 minutes', member: 'RM 98', nonMember: 'RM 133' },
-          { duration: '90 minutes', member: 'RM 126', nonMember: 'RM 166' },
-          { duration: '120 minutes', member: 'RM 156', nonMember: 'RM 201' },
-        ],
+        
       },
             {
         name: 'Intuitive Wellness Massage',
         image: '/images/spa-hero-2.jpg',
         description: 'Whole Body Massage with Warm Synergy Aromatherapy Massage Oil + Thermal Therapy',
         therapeuticNote: 'Warm oil massage that improves skin health, relaxes muscles, and helps drain the lymphatic nodes.',
-        pricing: [
-          { duration: '90 minutes', member: 'RM 130', nonMember: 'RM 171' },
-          { duration: '120 minutes', member: 'RM 159', nonMember: 'RM 205' },
-        ],
+        
       },
       {
         name: 'Sports Massage',
-        image: '/images/sportsmassage.png',
+        image: '/images/sport.png',
         description: 'Whole Body Massage + Thermal Therapy',
         therapeuticNote: 'Sports massage is a therapy that boosts athletic performance, prevents injuries, and aids recovery. It targets tense areas using deep pressure and stretching techniques to promote muscle tension relief, improved flexibility, and reduced soreness.',
-        pricing: [
-          { duration: '90 minutes', member: 'RM 135', nonMember: 'RM 176' },
-          { duration: '120 minutes', member: 'RM 159', nonMember: 'RM 205' },
-        ],
+        
       },
       {
         name: 'Ginger Cupping Bliss',
         image: '/images/gingercuping.png',
         description: 'Whole Body Massage with Synergy Aromatherapy Massage Oil + Ginger Cupping + Thermal Therapy',
         therapeuticNote: 'Promotes pain relief, improves blood circulation, relaxation, detoxification, and respiratory support.',
-        pricing: [
-          { duration: '90 minutes', member: 'RM 141', nonMember: 'RM 185' },
-          { duration: '120 minutes', member: 'RM 167', nonMember: 'RM 216' },
-        ],
+        
       },
       {
         name: 'Harmony Himalayan Therapy',
         image: '/images/harmonyhimalayan.png',
         description: 'Whole Body Massage with Synergy Aromatherapy Massage Oil + Himalayan Salt Hot Stone + Thermal Therapy',
         therapeuticNote: 'The therapeutic Himalayan salt stones promote gentle exfoliation, improve skin\'s glowing complexion, muscle relaxation, deep relaxation, detoxify the body, and stimulate the healing process.',
-        pricing: [
-          { duration: '90 minutes', member: 'RM 151', nonMember: 'RM 197' },
-          { duration: '120 minutes', member: 'RM 179', nonMember: 'RM 230' },
-        ],
+        
       },
       {
         name: 'Hilot Healing Hands',
         image: '/images/hilothealing.png',
         description: 'Whole Body Massage with Synergy Aromatherapy Massage Oil + Warm Banana Leaf + Thermal Therapy + Ginger Molasses Tea',
         therapeuticNote: 'Experience the ancient Filipino healing tradition of Hilot with warm banana leaves infused with aromatherapy treatment oil. This treatment stimulates circulation, releases tension, boosts the immune system, promotes positive effect on the reproductive system, and detoxifies the body.',
-        pricing: [
-          { duration: '90 minutes', member: 'RM 220', nonMember: 'RM 260' },
-          { duration: '120 minutes', member: 'RM 280', nonMember: 'RM 340' },
-        ],
+        
       },
       {
         name: 'Lymphatic Drainage Therapy',
         image: '/images/lymp.jpeg',
         description: 'Whole Body Massage with Detoxifying Aromatherapy Massage Oil + Thermal Therapy + Ginger Molasses Tea',
-        therapeuticNote: 'A gentle, rhythmic massage technique designed to stimulate lymphatic circulation, aiding the removal of toxins, waste products, and excess fluids from the body. This soothing stimulation helps reduce swelling, relieve discomfort associated with lymphedema, and encourage relaxation',
-        pricing: [
-          { duration: '90 minutes', member: 'RM 220', nonMember: 'RM 260' },
-          { duration: '120 minutes', member: 'RM 280', nonMember: 'RM 340' },
-        ],
+        therapeuticNote: 'A gentle, rhythmic massage technique designed to stimulate lymphatic circulation, aiding the removal of toxins, waste products, and excess fluids from the body. This soothing stimulation helps reduce swelling, relieve discomfort associated with lymphedema, and encourage relaxation'
       },
       {
         name: 'Eco-Shape Treatment',
         image: '/images/ecoshape.jpeg',
         description: ' Whole Body Massage with Synergy Aromatherapy Slimming Massage Oil + Wood Sculpting + Thermal Therapy + Ginger Molasses Tea',
         therapeuticNote: ' Experience a natural, non-invasive body shaping method using sustainable tools.Eco-Shape improves skin appearance while toning and sculpting the figure, targeting cellulite and stubborn fat at different depths. Enhanced with aromatherapy oil for a smooth application without any damage. But keep in mind - its all about contouring, not weight loss!',
-        pricing: [
-          { duration: '90 minutes', member: 'RM 220', nonMember: 'RM 260' },
-          { duration: '120 minutes', member: 'RM 280', nonMember: 'RM 340' },
-        ],
+        
       },
       {
-        name: 'Indian Head Massage Therapy',
-        image: '/images/headmassage.png',
-        description: ' Head, Neck, Face, and Shoulder Massage + Thermal Therapy Synergy Essential Oil Option: Peace of Mind or Sweet Dream Facial Oil Option: Primrose Evening Oil / Rosehip Oil',
-        therapeuticNote: ' It helps relieve migraines, headaches, insomnia, and fatigue, alleviate stress and tension, stimulate hair growth, detoxify through lymphatic drainage, enhance relaxation, improve overall well-being, and facilitate better rest',
-        pricing: [
-          { duration: '90 minutes', member: 'RM 220', nonMember: 'RM 260' },
-          { duration: '120 minutes', member: 'RM 280', nonMember: 'RM 340' },
-        ],
+        name: 'Healing Spa Treatment',
+        image: '/images/adevahealingspatreatment.png',
+        description: 'Enjoy a unique and revitalizing 3-hour experience at our exclusive Healing Spa',
+        therapeuticNote: 'A personalized consultation to understand your specific needs,  A 10-minute Himalayan foot scrub to exfoliate and soften your feet , A 15-minute lymphatic dry brush treatment that will stimulate circulation,  detoxify the body, and make your skin feel soft,  A soothing warm bath soak infused with magnesium flakes, synergy  aromatherapy oils, and fresh milk to relax and rejuvenate, Thermal therapy to ease muscle tension and promote relaxation, A 120-minute full-body massage of your choice:  Adeva Signature Massage or  Swedish Massage',
+       
       },
+      
     ],
   },
   {
@@ -145,53 +121,30 @@ const services: Category[] = [
     items: [
       {
         name: 'Aromatherapy Consultation',
-        image: '/images/consult.jpg',
+        image: '/images/consultation.jpg',
         description: 'Book a session with our certified IFA aromatherapists to create a bespoke synergy of essential oil blends tailored to your unique needs, enhancing your physical, emotional, and mental well-being.',
         therapeuticNote: 'Our expert aromatherapists will assess your needs and create custom essential oil blends that support your wellness journey.',
-        pricing: [
-          { duration: '45 minutes', member: 'RM 150', nonMember: 'RM 180' },
-          { duration: '60 minutes', member: 'RM 200', nonMember: 'RM 240' },
-        ],
+       
       },
     ],
   },
-  {
-    category: 'ADEVA HEALING SPA TREATMENT',
-    items: [
-      {
-        name: 'Aromatherapy Consultation',
-        image: '/images/healingspa.jpeg',
-        description: 'Enjoy a unique and revitalizing 3-hour experience at our exclusive Healing Spa',
-        therapeuticNote: 'A personalized consultation to understand your specific needs,  A 10-minute Himalayan foot scrub to exfoliate and soften your feet , A 15-minute lymphatic dry brush treatment that will stimulate circulation,  detoxify the body, and make your skin feel soft,  A soothing warm bath soak infused with magnesium flakes, synergy  aromatherapy oils, and fresh milk to relax and rejuvenate, Thermal therapy to ease muscle tension and promote relaxation, A 120-minute full-body massage of your choice:  Adeva Signature Massage or  Swedish Massage',
-        pricing: [
-          { duration: 'single', member: 'RM 330', nonMember: 'RM 350' },
-          { duration: 'couple', member: 'RM 630', nonMember: 'RM 650' },
-        ],
-      },
-    ],
-  },
+  
   {
     category: 'ADD ON TREATMENTS',
     items: [
       {
         name: ' Lymphatic Dry Brush',
-        image: '/images/healingspa.jpeg',
+        image: '/images/treatment-2.jpg',
         description: 'whole Body Dry Brush + Body Treatment Oil',
         therapeuticNote: 'Lymphatic dry brushing is a technique that helps stimulate the lymphatic system, promoting better body detoxification and circulation. It can also exfoliate the skin, remove dead cells, and improve overall skin health',
-        pricing: [
-          { duration: 'single', member: 'RM 330', nonMember: 'RM 350' },
-          { duration: 'couple', member: 'RM 630', nonMember: 'RM 650' },
-        ],
+       
       },
       {
         name: ' Foot Soak Therapy',
-        image: '/images/healingspa.jpeg',
+        image: '/images/product-6.jpg',
         description: 'Magnesium Flakes + Fresh Milk Synergy Essential Oil Option: Peace of Mind or Sweet Dream',
         therapeuticNote: 'A magnesium flake, milk, and essential oil foot soak pampers your feet with relaxation, softer skin, and potential relief from aches and dryness, Recommended for tired feet, dry skin, stress, or occasional foot discomfort',
-        pricing: [
-          { duration: 'single', member: 'RM 330', nonMember: 'RM 350' },
-          { duration: 'couple', member: 'RM 630', nonMember: 'RM 650' },
-        ],
+        
       },
     ],
   },
@@ -230,7 +183,8 @@ export function ServicesSection() {
             Our Services
           </h2>
           <p className="text-lg text-[#A99074] max-w-2xl mx-auto mb-8">
-          Experience Ultimate Relaxation at Adeva Holistic Aromatherapy Spa          </p>
+            Experience Ultimate Relaxation at Adeva Holistic Aromatherapy Spa
+          </p>
         </motion.div>
 
         <Tabs defaultValue={services[0].category} className="w-full">
@@ -255,12 +209,7 @@ export function ServicesSection() {
 
           {services.map((category) => (
             <TabsContent key={category.category} value={category.category}>
-              {category.subtitle && (
-                <p className="text-center text-[#A99074] italic mb-8">
-                  {category.subtitle}
-                </p>
-              )}
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto justify-items-center">
                 {category.items.map((service, index) => (
                   <ServiceCard
                     key={index}
@@ -268,8 +217,7 @@ export function ServicesSection() {
                     title={service.name}
                     description={service.description}
                     therapeuticNote={service.therapeuticNote}
-                    pricing={service.pricing}
-                    isConsultation={service.name === 'Aromatherapy Consultation'}
+                    isConsultation={service.name.includes('Consultation')}
                   />
                 ))}
               </div>
@@ -280,4 +228,3 @@ export function ServicesSection() {
     </section>
   )
 }
-

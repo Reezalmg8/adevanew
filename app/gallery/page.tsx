@@ -12,12 +12,12 @@ import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 
 const galleryImages = {
   products: [
-    { src: '/images/product-1.jpg', alt: 'Spa Product 1' },
-    { src: '/images/product-2.jpg', alt: 'Spa Product 2' },
-    { src: '/images/product-3.jpg', alt: 'Spa Product 3' },
-    { src: '/images/product-4.jpg', alt: 'Spa Product 4' },
-    { src: '/images/spa-treatment-1.jpg', alt: 'Spa Product 5' },
-    { src: '/images/product-6.jpg', alt: 'Spa Product 6' },
+    { src: '/images/gp1.jpg', alt: 'Spa Product 1' },
+    { src: '/images/gp2.jpg', alt: 'Spa Product 2' },
+    { src: '/images/gp3.jpg', alt: 'Spa Product 3' },
+    { src: '/images/gp4.jpg', alt: 'Spa Product 4' },
+    { src: '/images/product-1.jpg', alt: 'Spa Product 5' },
+    { src: '/images/gp6.jpg', alt: 'Spa Product 6' },
   ],
   treatments: [
     { src: '/images/treatment-1.jpg', alt: 'Spa Treatment 1' },
@@ -31,7 +31,7 @@ const galleryImages = {
     { src: '/images/interior-1.jpg', alt: 'Spa Interior 1' },
     { src: '/images/interior-2.jpg', alt: 'Spa Interior 2' },
     { src: '/images/interior-3.jpg', alt: 'Spa Interior 3' },
-    { src: '/images/interior-4.jpg', alt: 'Spa Interior 4' },
+    { src: '/images/gallery3.jpg', alt: 'Spa Interior 4' },
     { src: '/images/interior-5.jpg', alt: 'Spa Interior 5' },
     { src: '/images/interior-6.jpg', alt: 'Spa Interior 6' },
   ],

@@ -6,8 +6,8 @@ import { Leaf, Heart, Shield, Hand } from 'lucide-react'
 
 const features = [
   {
-    title: "Holistic Wellness Experience",
-    description: "Our sanctuary is thoughtfully designed to nurture your complete well-being. We combine ancient healing traditions with modern therapeutic techniques, using only premium-grade essential oils and natural products to ensure the highest quality experience.",
+    title: "Holistic Wellness with Expert Care",
+    description: "Our sanctuary blends ancient healing traditions with modern techniques, using premium essential oils and natural products for your well-being. Highly trained therapists tailor each massage session to relax, rejuvenate, and restore balance. Experience the perfect harmony of expert care and holistic healing.",
     icon: Heart
   },
   {
@@ -20,11 +20,6 @@ const features = [
     description: "Our in-house aromatherapists are certified by the International Federation of Aromatherapists (IFA), ensuring the highest standards of professional practice. With advanced training and a commitment to holistic wellness, they craft personalized treatments using therapeutic-grade essential oils to nurture your body, mind, and spirit.",
     icon: Leaf
   },
-  {
-    title: "Expert Massage Therapist",
-    description: "Our massage therapists are highly trained professionals with expertise in a variety of therapeutic techniques. Combining advanced skills with intuitive care, they tailor each session to your specific needs, promoting relaxation, rejuvenation, and overall well-being.",
-    icon: Hand
-  }
 ]
 
 export function WhyChooseUs() {
@@ -92,6 +87,7 @@ export function WhyChooseUs() {
           </p>
         </motion.div>
 
+        {/* Update: Changed `md:grid-cols-3` to `md:grid-cols-4` */}
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {features.map((feature, index) => (
             <motion.div 
@@ -119,4 +115,3 @@ export function WhyChooseUs() {
     </section>
   )
 }
-
