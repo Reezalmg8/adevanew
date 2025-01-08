@@ -15,7 +15,6 @@ const navItems = [
     submenu: [
       { name: 'Services', href: '/services', description: 'Explore our range of spa services' },
       { name: 'Product', href: '/product', description: 'Discover our curated selection of products' },
-      { name: 'B2B', href: '/b2b', description: 'Learn about our business solutions' },
     ]
   },
   { name: 'About Us', href: '/about', icon: Info },
