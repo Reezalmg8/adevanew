@@ -1,7 +1,6 @@
 export interface Service {
   name: string
   image: string
-  description: string
   therapeuticNote: string
 }
 

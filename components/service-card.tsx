@@ -10,7 +10,6 @@ import type { Service } from '../types/service'
 interface ServiceCardProps {
   image: string
   title: string
-  description: string
   therapeuticNote: string
   isConsultation?: boolean
 }
@@ -18,7 +17,6 @@ interface ServiceCardProps {
 export function ServiceCard({ 
   image, 
   title, 
-  description, 
   therapeuticNote,
   isConsultation = false 
 }: ServiceCardProps) {
@@ -55,9 +53,7 @@ export function ServiceCard({
         </motion.h3>
         
         <div className="space-y-4">
-          <p className="text-[#6F5541] leading-relaxed whitespace-pre-line">
-            {description}
-          </p>
+          
           <p className="text-[#A99074] text-sm italic">
             *{therapeuticNote}
           </p>
