@@ -34,7 +34,7 @@ export default function AboutPage() {
                 </div>
                 <div className="-translate-y-8">
                   <Image
-                    src="/images/products-3.jpg"
+                    src="/images/product-3.jpg"
                     width={300}
                     height={400}
                     alt="Spa Products"

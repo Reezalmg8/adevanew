@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from "@/components/ui/button"
-import { Menu, X, PackageIcon, Info, ImageIcon, HelpCircle, Sparkles, ChevronDown } from 'lucide-react'
+import { Menu, X, PackageIcon, Info, ImageIcon, HelpCircle, Sparkles, ChevronDown, ChevronRight } from 'lucide-react'
 
 const navItems = [
   { 
@@ -13,8 +13,14 @@ const navItems = [
     href: '#',
     icon: Sparkles,
     submenu: [
-      { name: 'Services', href: '/services', description: 'Explore our range of spa services' },
-      { name: 'Product', href: '/product', description: 'Discover our curated selection of products' },
+      { 
+        name: 'Services', 
+        href: '#',
+        submenu: [
+          { name: 'Treatments', href: '/services', description: 'Explore our range of spa treatments' },
+          { name: 'B2B Services', href: '/services/b2b', description: 'Elevate your corporate events with our services' },
+        ]
+      },
     ]
   },
   { name: 'About Us', href: '/about', icon: Info },
@@ -83,7 +89,7 @@ export function EnhancedHeader() {
                   className="object-cover transition-all duration-300"
                   style={{ 
                     objectFit: 'contain',
-                    transform: 'scale(2.0)',
+                    transform: 'scale(1.5)',
                     transformOrigin: 'left center'
                   }}
                   priority
@@ -116,10 +122,9 @@ export function EnhancedHeader() {
                   {item.submenu && (
                     <ChevronDown className="w-4 h-4 ml-1" />
                   )}
-                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#A99074] transform scale-x-0 transition-transform duration-300 origin-left group-hover:scale-x-100" />
                 </Link>
 
-                {/* Redesigned Submenu */}
+                {/* First level submenu */}
                 {item.submenu && activeSubmenu === item.name && (
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
@@ -131,14 +136,39 @@ export function EnhancedHeader() {
                     onMouseLeave={handleSubmenuLeave}
                   >
                     {item.submenu.map((subItem) => (
-                      <Link
-                        key={subItem.name}
-                        href={subItem.href}
-                        className="block px-4 py-3 text-[#6F5541] hover:bg-[#F8E3DA] hover:text-[#A99074] transition-colors duration-200 rounded-md"
-                      >
-                        <div className="font-medium">{subItem.name}</div>
-                        <div className="text-sm text-[#A99074]">{subItem.description}</div>
-                      </Link>
+                      <div key={subItem.name} className="relative group">
+                        <Link
+                          href={subItem.href}
+                          className="block px-4 py-3 text-[#6F5541] hover:bg-[#F8E3DA] hover:text-[#A99074] transition-colors duration-200 rounded-md"
+                        >
+                          <div className="font-medium flex items-center justify-between">
+                            {subItem.name}
+                            {subItem.submenu && <ChevronRight className="w-4 h-4" />}
+                          </div>
+                        </Link>
+
+                        {/* Second level submenu */}
+                        {subItem.submenu && (
+                          <motion.div
+                            initial={{ opacity: 0, x: 10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: 10 }}
+                            transition={{ duration: 0.2 }}
+                            className="absolute left-full top-0 mt-0 w-64 bg-white rounded-md shadow-lg py-4 px-2 hidden group-hover:block"
+                          >
+                            {subItem.submenu.map((nestedItem) => (
+                              <Link
+                                key={nestedItem.name}
+                                href={nestedItem.href}
+                                className="block px-4 py-3 text-[#6F5541] hover:bg-[#F8E3DA] hover:text-[#A99074] transition-colors duration-200 rounded-md"
+                              >
+                                <div className="font-medium">{nestedItem.name}</div>
+                                <div className="text-sm text-[#A99074]">{nestedItem.description}</div>
+                              </Link>
+                            ))}
+                          </motion.div>
+                        )}
+                      </div>
                     ))}
                   </motion.div>
                 )}
@@ -227,7 +257,7 @@ export function EnhancedHeader() {
                         </Link>
                       </motion.div>
                       
-                      {/* Mobile Submenu */}
+                      {/* First level submenu */}
                       {item.submenu && activeSubmenu === item.name && (
                         <motion.div
                           initial={{ opacity: 0, y: -10 }}
@@ -236,15 +266,47 @@ export function EnhancedHeader() {
                           className="mt-4 space-y-2"
                         >
                           {item.submenu.map((subItem) => (
-                            <Link
-                              key={subItem.name}
-                              href={subItem.href}
-                              className="block text-[#A99074] hover:text-[#6F5541] py-2"
-                              onClick={() => setIsMenuOpen(false)}
-                            >
-                              <div>{subItem.name}</div>
-                              <div className="text-sm text-[#A99074]">{subItem.description}</div>
-                            </Link>
+                            <div key={subItem.name}>
+                              <Link
+                                href={subItem.href}
+                                className="block text-[#A99074] hover:text-[#6F5541] py-2"
+                                onClick={(e) => {
+                                  if (subItem.submenu) {
+                                    e.preventDefault()
+                                    setActiveSubmenu(activeSubmenu === subItem.name ? null : subItem.name)
+                                  } else {
+                                    setIsMenuOpen(false)
+                                  }
+                                }}
+                              >
+                                <div className="flex items-center justify-between">
+                                  {subItem.name}
+                                  {subItem.submenu && <ChevronDown className="w-4 h-4" />}
+                                </div>
+                              </Link>
+
+                              {/* Second level submenu */}
+                              {subItem.submenu && activeSubmenu === subItem.name && (
+                                <motion.div
+                                  initial={{ opacity: 0, y: -10 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  exit={{ opacity: 0, y: -10 }}
+                                  className="ml-4 mt-2 space-y-2"
+                                >
+                                  {subItem.submenu.map((nestedItem) => (
+                                    <Link
+                                      key={nestedItem.name}
+                                      href={nestedItem.href}
+                                      className="block text-[#A99074] hover:text-[#6F5541] py-2"
+                                      onClick={() => setIsMenuOpen(false)}
+                                    >
+                                      <div>{nestedItem.name}</div>
+                                      <div className="text-sm text-[#A99074]">{nestedItem.description}</div>
+                                    </Link>
+                                  ))}
+                                </motion.div>
+                              )}
+                            </div>
                           ))}
                         </motion.div>
                       )}
