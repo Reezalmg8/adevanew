@@ -15,7 +15,7 @@ const collaborations: Collaboration[] = [
   {
     name: "Adeva's Event Collab with Blendsmith",
     description: "A unique fusion of aromatherapy and mixology, perfect for corporate events that aim to engage all senses. This collaboration offers custom-crafted scents paired with bespoke cocktails, creating an unforgettable sensory experience for your guests.",
-    image: "/images/blendsmith-collab.jpg",
+    image: "/images/gp2.jpg",
     link: "https://example.com/blendsmith-collab"
   },
   {
@@ -50,16 +50,7 @@ function CollaborationCard({ collaboration }: { collaboration: Collaboration }) 
       <div className="p-6">
         <h3 className="text-2xl font-serif text-[#6F5541] mb-4">{collaboration.name}</h3>
         <p className="text-[#A99074] mb-6">{collaboration.description}</p>
-        {collaboration.link && (
-          <Button 
-            asChild
-            className="bg-[#6F5541] hover:bg-[#A99074] text-white transition-colors duration-300"
-          >
-            <a href={collaboration.link} target="_blank" rel="noopener noreferrer">
-              Learn More
-            </a>
-          </Button>
-        )}
+        
       </div>
     </motion.div>
   )
@@ -111,7 +102,7 @@ export function B2BServices() {
               asChild
               className="bg-[#6F5541] hover:bg-[#A99074] text-white transition-colors duration-300"
             >
-              <a href="mailto:b2b@adevaspa.com">Contact Us for B2B Inquiries</a>
+              <a href="https://wa.me/${whatsappNumber}?text=${whatsappMessage}">Contact Us for B2B Inquiries</a>
             </Button>
           </div>
         </motion.div>
