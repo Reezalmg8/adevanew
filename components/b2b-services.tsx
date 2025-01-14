@@ -97,14 +97,7 @@ export function B2BServices() {
             <li>Aromatherapy consultations for stress management and productivity</li>
             <li>Scent branding services to enhance your corporate identity</li>
           </ul>
-          <div className="mt-8">
-            <Button 
-              asChild
-              className="bg-[#6F5541] hover:bg-[#A99074] text-white transition-colors duration-300"
-            >
-              <a href="https://wa.me/${whatsappNumber}?text=${whatsappMessage}">Contact Us for B2B Inquiries</a>
-            </Button>
-          </div>
+          
         </motion.div>
       </div>
     </section>
