@@ -88,7 +88,7 @@ export function EnhancedHeader() {
                   className="object-cover transition-all duration-300"
                   style={{ 
                     objectFit: 'contain',
-                    transform: 'scale(1.2)',
+                    transform: 'scale(2.0)',
                     transformOrigin: 'left center'
                   }}
                   priority
