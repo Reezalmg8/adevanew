@@ -25,7 +25,7 @@ const collaborations: Collaboration[] = [
   },
   {
     name: "Voodoo Retreat",
-    description: "At the Voodoo Retreat, we offer immersive aromatherapy experiences tailored for corporate teams. Our programs focus on stress relief, team building, and enhancing creativity through the power of scent and holistic wellness practices.",
+    description: "At the Voodoo Retreat,Adeva provided rejuvinating aromatherapy massages to participants, offering deep body relief and relaxation after extensive physical exercise through the healing power of scent and holistic wellness practices.",
     image: "/images/gp6.jpg",
   }
 ]

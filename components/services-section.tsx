@@ -98,7 +98,7 @@ const services: Category[] = [
       {
         name: 'Healing Spa Treatment',
         image: '/images/adevahealingspatreatment.png',
-        therapeuticNote: 'A personalized consultation to understand your specific needs,  A 10-minute Himalayan foot scrub to exfoliate and soften your feet , A 15-minute lymphatic dry brush treatment that will stimulate circulation,  detoxify the body, and make your skin feel soft,  A soothing warm bath soak infused with magnesium flakes, synergy  aromatherapy oils, and fresh milk to relax and rejuvenate, Thermal therapy to ease muscle tension and promote relaxation, A 120-minute full-body massage of your choice:  Adeva Signature Massage or  Swedish Massage',
+        therapeuticNote: 'A personalized consultation to understand your specific needs,  a 10-minute Himalayan foot scrub to exfoliate and soften your feet , a 15-minute lymphatic dry brush treatment that will stimulate circulation,  detoxify the body, and make your skin feel soft,   soothing warm bath soak infused with magnesium flakes, synergy  aromatherapy oils, and fresh milk to relax and rejuvenate, Thermal therapy to ease muscle tension and promote relaxation, a 120-minute full-body massage of your choice:  Adeva Signature Massage or  Swedish Massage',
        
       },
       
