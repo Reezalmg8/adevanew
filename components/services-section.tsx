@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { motion } from 'framer-motion'
 import { ServiceCard } from './service-card'
+import { ChevronDown } from 'lucide-react'
 import type { Category } from '../types/service'
 
 const services: Category[] = [
@@ -135,27 +136,24 @@ const services: Category[] = [
 ];
 
 export function ServicesSection() {
-  const sectionRef = useRef<HTMLElement>(null)
+  const [activeTab, setActiveTab] = useState(services[0].category)
+  const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
+  // Close dropdown when clicking outside
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          entry.target.querySelector('.section-title')?.classList.add('active')
-        }
-      },
-      { threshold: 0.2 }
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsMobileDropdownOpen(false)
+      }
     }
 
-    return () => observer.disconnect()
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-24 bg-[#FDF8F5]">
+    <section className="py-24 bg-[#FDF8F5]">
       <div className="container mx-auto px-4">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -163,7 +161,7 @@ export function ServicesSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="section-title text-4xl md:text-5xl font-serif text-[#6F5541] mb-6">
+          <h2 className="text-4xl md:text-5xl font-serif text-[#6F5541] mb-6">
             Our Services
           </h2>
           <p className="text-lg text-[#A99074] max-w-2xl mx-auto mb-8">
@@ -171,8 +169,44 @@ export function ServicesSection() {
           </p>
         </motion.div>
 
-        <Tabs defaultValue={services[0].category} className="w-full">
-          <TabsList className="w-full flex flex-wrap justify-center mb-12">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+          {/* Mobile Dropdown */}
+          <div className="md:hidden relative mb-8" ref={dropdownRef}>
+            <button
+              onClick={() => setIsMobileDropdownOpen(!isMobileDropdownOpen)}
+              className="w-full px-4 py-3 bg-white rounded-lg shadow-sm flex items-center justify-between text-[#6F5541] border border-[#DED3B2]"
+            >
+              <span>{activeTab}</span>
+              <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${isMobileDropdownOpen ? 'transform rotate-180' : ''}`} />
+            </button>
+            
+              {isMobileDropdownOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="absolute top-full left-0 right-0 mt-2 bg-white rounded-lg shadow-lg z-10 overflow-hidden"
+                >
+                  {services.map((category) => (
+                    <button
+                      key={category.category}
+                      onClick={() => {
+                        setActiveTab(category.category)
+                        setIsMobileDropdownOpen(false)
+                      }}
+                      className={`w-full px-4 py-3 text-left hover:bg-[#F8E3DA] transition-colors ${
+                        activeTab === category.category ? 'bg-[#F8E3DA] text-[#6F5541]' : 'text-[#A99074]'
+                      }`}
+                    >
+                      {category.category}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+          </div>
+
+          {/* Desktop Tabs */}
+          <TabsList className="hidden md:flex w-full justify-center mb-12">
             {services.map((category, index) => (
               <motion.div
                 key={category.category}
@@ -191,16 +225,22 @@ export function ServicesSection() {
             ))}
           </TabsList>
 
+          {/* Content */}
           {services.map((category) => (
             <TabsContent key={category.category} value={category.category}>
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto justify-items-center">
+              {category.subtitle && (
+                <p className="text-center text-[#A99074] italic mb-8">
+                  {category.subtitle}
+                </p>
+              )}
+              <div className="grid gap-8 max-w-6xl mx-auto grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                 {category.items.map((service, index) => (
                   <ServiceCard
                     key={index}
                     image={service.image}
                     title={service.name}
                     therapeuticNote={service.therapeuticNote}
-                    isConsultation={service.name.includes('Consultation')}
+                    isConsultation={service.name === 'Aromatherapy Consultation'}
                   />
                 ))}
               </div>
@@ -211,3 +251,4 @@ export function ServicesSection() {
     </section>
   )
 }
+

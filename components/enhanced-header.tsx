@@ -32,6 +32,7 @@ export function EnhancedHeader() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
+  const [activeNestedMenu, setActiveNestedMenu] = useState<string | null>(null)
   const submenuTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
@@ -66,30 +67,28 @@ export function EnhancedHeader() {
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-lg' 
-          : 'bg-transparent'
+        isMenuOpen || isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-24">
+        <div className="flex items-center justify-between h-16 md:h-24">
           {/* Logo */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="relative"
+            className="relative flex items-center"
           >
             <Link href="/" className="block">
-              <div className="relative w-[200px] h-20">
+              <div className="relative w-[150px] md:w-[200px] h-16 md:h-20">
                 <Image
-                  src={isScrolled ? "/images/adevanewlogo.png" : "/images/adevanewlogo.png"}
+                  src="/images/adevanewlogo.png"
                   alt="Adeva Holistic Aromatherapy Spa"
                   fill
                   className="object-cover transition-all duration-300"
                   style={{ 
                     objectFit: 'contain',
-                    transform: 'scale(1.5)',
+                    transform: 'scale(1.2)',
                     transformOrigin: 'left center'
                   }}
                   priority
@@ -124,7 +123,7 @@ export function EnhancedHeader() {
                   )}
                 </Link>
 
-                {/* First level submenu */}
+                {/* Desktop submenu */}
                 {item.submenu && activeSubmenu === item.name && (
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
@@ -147,7 +146,6 @@ export function EnhancedHeader() {
                           </div>
                         </Link>
 
-                        {/* Second level submenu */}
                         {subItem.submenu && (
                           <motion.div
                             initial={{ opacity: 0, x: 10 }}
@@ -176,29 +174,31 @@ export function EnhancedHeader() {
             ))}
           </nav>
 
-          {/* Book Now Button */}
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-          >
-            <Button 
-              asChild
-              className={`transition-all duration-300 transform hover:scale-105 ${
-                isScrolled 
-                  ? 'bg-[#6F5541] text-white hover:bg-[#A99074] shadow-md' 
-                  : 'bg-white/80 text-[#6F5541] hover:bg-white shadow-lg'
-              }`}
+          {/* Desktop Book Now Button */}
+          <div className="hidden md:block">
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
             >
-              <a 
-                href="https://wa.me/+60128853836" 
-                target="_blank" 
-                rel="noopener noreferrer"
+              <Button 
+                asChild
+                className={`transition-all duration-300 transform hover:scale-105 ${
+                  isScrolled 
+                    ? 'bg-[#6F5541] text-white hover:bg-[#A99074] shadow-md' 
+                    : 'bg-white/80 text-[#6F5541] hover:bg-white shadow-lg'
+                }`}
               >
-                Book a Treatment
-              </a>
-            </Button>
-          </motion.div>
+                <a 
+                  href="https://wa.me/+60128853836" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  Book a Treatment
+                </a>
+              </Button>
+            </motion.div>
+          </div>
 
           {/* Mobile Menu Button */}
           <button 
@@ -206,15 +206,7 @@ export function EnhancedHeader() {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
-            <motion.div
-              animate={{ 
-                color: isMenuOpen 
-                  ? '#6F5541'
-                  : isScrolled 
-                    ? '#6F5541'
-                    : '#ffffff'
-              }}
-            >
+            <motion.div animate={{ color: '#6F5541' }}>
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </motion.div>
           </button>
@@ -227,99 +219,111 @@ export function EnhancedHeader() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.15 }}
-                className="md:hidden fixed inset-0 top-24 bg-white/95 backdrop-blur-md z-40"
+                className="md:hidden fixed inset-0 top-16 bg-white z-40"
               >
-                <nav className="flex flex-col items-center justify-center h-full space-y-8">
+                <nav className="flex flex-col items-start justify-start h-full p-6 space-y-6 overflow-y-auto">
                   {navItems.map((item, index) => (
-                    <div key={item.name} className="flex flex-col items-center">
+                    <div key={item.name} className="w-full">
                       <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
                       >
-                        <Link 
-                          href={item.href}
-                          onClick={(e) => {
+                        <button
+                          onClick={() => {
                             if (item.submenu) {
-                              e.preventDefault()
                               setActiveSubmenu(activeSubmenu === item.name ? null : item.name)
-                            } else {
-                              handleNavigation(e, item.href)
+                              setActiveNestedMenu(null)
+                            } else if (item.href !== '#') {
+                              setIsMenuOpen(false)
+                              window.location.href = item.href
                             }
                           }}
-                          className="text-lg text-[#6F5541] hover:text-[#A99074] transition-colors duration-300 flex items-center"
+                          className="text-lg text-[#6F5541] hover:text-[#A99074] transition-colors duration-300 flex items-center w-full"
                         >
                           <item.icon className="w-6 h-6 mr-2" />
                           {item.name}
                           {item.submenu && (
-                            <ChevronDown className="w-4 h-4 ml-1" />
+                            <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-200 ${
+                              activeSubmenu === item.name ? 'rotate-180' : ''
+                            }`} />
                           )}
-                        </Link>
+                        </button>
                       </motion.div>
                       
-                      {/* First level submenu */}
-                      {item.submenu && activeSubmenu === item.name && (
-                        <motion.div
-                          initial={{ opacity: 0, y: -10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -10 }}
-                          className="mt-4 space-y-2"
-                        >
-                          {item.submenu.map((subItem) => (
-                            <div key={subItem.name}>
-                              <Link
-                                href={subItem.href}
-                                className="block text-[#A99074] hover:text-[#6F5541] py-2"
-                                onClick={(e) => {
-                                  if (subItem.submenu) {
-                                    e.preventDefault()
-                                    setActiveSubmenu(activeSubmenu === subItem.name ? null : subItem.name)
-                                  } else {
-                                    setIsMenuOpen(false)
-                                  }
-                                }}
-                              >
-                                <div className="flex items-center justify-between">
-                                  {subItem.name}
-                                  {subItem.submenu && <ChevronDown className="w-4 h-4" />}
-                                </div>
-                              </Link>
-
-                              {/* Second level submenu */}
-                              {subItem.submenu && activeSubmenu === subItem.name && (
-                                <motion.div
-                                  initial={{ opacity: 0, y: -10 }}
-                                  animate={{ opacity: 1, y: 0 }}
-                                  exit={{ opacity: 0, y: -10 }}
-                                  className="ml-4 mt-2 space-y-2"
+                      <AnimatePresence>
+                        {item.submenu && activeSubmenu === item.name && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="mt-4 ml-8 space-y-4"
+                          >
+                            {item.submenu.map((subItem) => (
+                              <div key={subItem.name}>
+                                <button
+                                  onClick={() => {
+                                    if (subItem.submenu) {
+                                      setActiveNestedMenu(activeNestedMenu === subItem.name ? null : subItem.name)
+                                    } else if (subItem.href !== '#') {
+                                      setIsMenuOpen(false)
+                                      window.location.href = subItem.href
+                                    }
+                                  }}
+                                  className="flex items-center justify-between w-full text-[#A99074] hover:text-[#6F5541] py-2"
                                 >
-                                  {subItem.submenu.map((nestedItem) => (
-                                    <Link
-                                      key={nestedItem.name}
-                                      href={nestedItem.href}
-                                      className="block text-[#A99074] hover:text-[#6F5541] py-2"
-                                      onClick={() => setIsMenuOpen(false)}
+                                  <span>{subItem.name}</span>
+                                  {subItem.submenu && (
+                                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
+                                      activeNestedMenu === subItem.name ? 'rotate-180' : ''
+                                    }`} />
+                                  )}
+                                </button>
+
+                                <AnimatePresence>
+                                  {subItem.submenu && activeNestedMenu === subItem.name && (
+                                    <motion.div
+                                      initial={{ opacity: 0, height: 0 }}
+                                      animate={{ opacity: 1, height: 'auto' }}
+                                      exit={{ opacity: 0, height: 0 }}
+                                      transition={{ duration: 0.2 }}
+                                      className="ml-4 mt-2 space-y-2"
                                     >
-                                      <div>{nestedItem.name}</div>
-                                      <div className="text-sm text-[#A99074]">{nestedItem.description}</div>
-                                    </Link>
-                                  ))}
-                                </motion.div>
-                              )}
-                            </div>
-                          ))}
-                        </motion.div>
-                      )}
+                                      {subItem.submenu.map((nestedItem) => (
+                                        <button
+                                          key={nestedItem.name}
+                                          onClick={() => {
+                                            setIsMenuOpen(false)
+                                            window.location.href = nestedItem.href
+                                          }}
+                                          className="block w-full text-left text-[#A99074] hover:text-[#6F5541] py-2"
+                                        >
+                                          <div>{nestedItem.name}</div>
+                                          <div className="text-sm text-[#A99074]">{nestedItem.description}</div>
+                                        </button>
+                                      ))}
+                                    </motion.div>
+                                  )}
+                                </AnimatePresence>
+                              </div>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
                   ))}
+                  
+                  {/* Book Now Button in mobile menu */}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
+                    className="w-full pt-4 mt-auto"
                   >
                     <Button 
                       asChild
-                      className="bg-[#6F5541] text-white hover:bg-[#A99074] transition-all duration-300"
+                      className="w-full bg-[#6F5541] text-white hover:bg-[#A99074] transition-all duration-300"
                     >
                       <a 
                         href="https://wa.me/+60128853836" 
