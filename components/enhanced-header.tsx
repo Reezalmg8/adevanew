@@ -1,31 +1,35 @@
-'use client'
+"use client"
 
-import { useState, useEffect, useRef } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useEffect, useRef } from "react"
+import Link from "next/link"
+import Image from "next/image"
+import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Menu, X, PackageIcon, Info, ImageIcon, HelpCircle, Sparkles, ChevronDown, ChevronRight } from 'lucide-react'
+import { Menu, X, PackageIcon, Info, ImageIcon, HelpCircle, Sparkles, ChevronDown, ChevronRight } from "lucide-react"
 
 const navItems = [
-  { 
-    name: 'What We Offer',
-    href: '#',
+  {
+    name: "What We Offer",
+    href: "#",
     icon: Sparkles,
     submenu: [
-      { 
-        name: 'Services', 
-        href: '#',
+      {
+        name: "Services",
+        href: "#",
         submenu: [
-          { name: 'Treatments', href: '/services', description: 'Explore our range of spa treatments' },
-          { name: 'B2B Services', href: '/services/b2b', description: 'Elevate your corporate events with our services' },
-        ]
+          { name: "Treatments", href: "/services", description: "Explore our range of spa treatments" },
+          {
+            name: "B2B Services",
+            href: "/services/b2b",
+            description: "Elevate your corporate events with our services",
+          },
+        ],
       },
-    ]
+    ],
   },
-  { name: 'About Us', href: '/about', icon: Info },
-  { name: 'Gallery', href: '/gallery', icon: ImageIcon },
-  { name: 'Help', href: '/help', icon: HelpCircle }
+  { name: "About Us", href: "/about", icon: Info },
+  { name: "Gallery", href: "/gallery", icon: ImageIcon },
+  { name: "Help", href: "/help", icon: HelpCircle },
 ]
 
 export function EnhancedHeader() {
@@ -40,8 +44,8 @@ export function EnhancedHeader() {
       setIsScrolled(window.scrollY > 50)
     }
 
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   const handleSubmenuEnter = (itemName: string) => {
@@ -58,26 +62,26 @@ export function EnhancedHeader() {
   }
 
   const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href === '#') return
+    if (href === "#") return
     e.preventDefault()
     setIsMenuOpen(false)
     window.location.href = href
   }
 
   return (
-    <header 
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isMenuOpen || isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'
+        isMenuOpen || isScrolled ? "bg-white shadow-lg" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto pr-4 pl-0 max-w-[1400px]">
         <div className="flex items-center justify-between h-16 md:h-24">
           {/* Logo */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="relative flex items-center"
+            className="relative flex items-center ml-1"
           >
             <Link href="/" className="block">
               <div className="relative w-[150px] md:w-[200px] h-16 md:h-20">
@@ -86,10 +90,10 @@ export function EnhancedHeader() {
                   alt="Adeva Holistic Aromatherapy Spa"
                   fill
                   className="object-cover transition-all duration-300"
-                  style={{ 
-                    objectFit: 'contain',
-                    transform: 'scale(2.0)',
-                    transformOrigin: 'left center'
+                  style={{
+                    objectFit: "contain",
+                    transform: "scale(1.6)",
+                    transformOrigin: "right center",
                   }}
                   priority
                 />
@@ -109,18 +113,16 @@ export function EnhancedHeader() {
                 onMouseEnter={() => handleSubmenuEnter(item.name)}
                 onMouseLeave={handleSubmenuLeave}
               >
-                <Link 
+                <Link
                   href={item.href}
                   onClick={(e) => handleNavigation(e, item.href)}
                   className={`relative inline-flex items-center py-2 ${
-                    isScrolled ? 'text-[#6F5541]' : 'text-white'
+                    isScrolled ? "text-[#6F5541]" : "text-white"
                   } hover:text-[#A99074] transition-colors duration-300`}
                 >
                   <item.icon className="w-5 h-5 mr-2" />
                   {item.name}
-                  {item.submenu && (
-                    <ChevronDown className="w-4 h-4 ml-1" />
-                  )}
+                  {item.submenu && <ChevronDown className="w-4 h-4 ml-1" />}
                 </Link>
 
                 {/* Desktop submenu */}
@@ -176,24 +178,16 @@ export function EnhancedHeader() {
 
           {/* Desktop Book Now Button */}
           <div className="hidden md:block">
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-            >
-              <Button 
+            <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}>
+              <Button
                 asChild
                 className={`transition-all duration-300 transform hover:scale-105 ${
-                  isScrolled 
-                    ? 'bg-[#6F5541] text-white hover:bg-[#A99074] shadow-md' 
-                    : 'bg-white/80 text-[#6F5541] hover:bg-white shadow-lg'
+                  isScrolled
+                    ? "bg-[#6F5541] text-white hover:bg-[#A99074] shadow-md"
+                    : "bg-white/80 text-[#6F5541] hover:bg-white shadow-lg"
                 }`}
               >
-                <a 
-                  href="https://wa.me/+60128853836" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                >
+                <a href="https://wa.me/+60128853836" target="_blank" rel="noopener noreferrer">
                   Book a Treatment
                 </a>
               </Button>
@@ -201,14 +195,8 @@ export function EnhancedHeader() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            <motion.div animate={{ color: '#6F5541' }}>
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </motion.div>
+          <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
+            <motion.div animate={{ color: "#6F5541" }}>{isMenuOpen ? <X size={24} /> : <Menu size={24} />}</motion.div>
           </button>
 
           {/* Mobile Menu */}
@@ -234,7 +222,7 @@ export function EnhancedHeader() {
                             if (item.submenu) {
                               setActiveSubmenu(activeSubmenu === item.name ? null : item.name)
                               setActiveNestedMenu(null)
-                            } else if (item.href !== '#') {
+                            } else if (item.href !== "#") {
                               setIsMenuOpen(false)
                               window.location.href = item.href
                             }
@@ -244,18 +232,20 @@ export function EnhancedHeader() {
                           <item.icon className="w-6 h-6 mr-2" />
                           {item.name}
                           {item.submenu && (
-                            <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-200 ${
-                              activeSubmenu === item.name ? 'rotate-180' : ''
-                            }`} />
+                            <ChevronDown
+                              className={`w-4 h-4 ml-1 transition-transform duration-200 ${
+                                activeSubmenu === item.name ? "rotate-180" : ""
+                              }`}
+                            />
                           )}
                         </button>
                       </motion.div>
-                      
+
                       <AnimatePresence>
                         {item.submenu && activeSubmenu === item.name && (
                           <motion.div
                             initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
+                            animate={{ opacity: 1, height: "auto" }}
                             exit={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.2 }}
                             className="mt-4 ml-8 space-y-4"
@@ -266,7 +256,7 @@ export function EnhancedHeader() {
                                   onClick={() => {
                                     if (subItem.submenu) {
                                       setActiveNestedMenu(activeNestedMenu === subItem.name ? null : subItem.name)
-                                    } else if (subItem.href !== '#') {
+                                    } else if (subItem.href !== "#") {
                                       setIsMenuOpen(false)
                                       window.location.href = subItem.href
                                     }
@@ -275,9 +265,11 @@ export function EnhancedHeader() {
                                 >
                                   <span>{subItem.name}</span>
                                   {subItem.submenu && (
-                                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
-                                      activeNestedMenu === subItem.name ? 'rotate-180' : ''
-                                    }`} />
+                                    <ChevronDown
+                                      className={`w-4 h-4 transition-transform duration-200 ${
+                                        activeNestedMenu === subItem.name ? "rotate-180" : ""
+                                      }`}
+                                    />
                                   )}
                                 </button>
 
@@ -285,7 +277,7 @@ export function EnhancedHeader() {
                                   {subItem.submenu && activeNestedMenu === subItem.name && (
                                     <motion.div
                                       initial={{ opacity: 0, height: 0 }}
-                                      animate={{ opacity: 1, height: 'auto' }}
+                                      animate={{ opacity: 1, height: "auto" }}
                                       exit={{ opacity: 0, height: 0 }}
                                       transition={{ duration: 0.2 }}
                                       className="ml-4 mt-2 space-y-2"
@@ -313,7 +305,7 @@ export function EnhancedHeader() {
                       </AnimatePresence>
                     </div>
                   ))}
-                  
+
                   {/* Book Now Button in mobile menu */}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -321,15 +313,11 @@ export function EnhancedHeader() {
                     transition={{ delay: 0.4 }}
                     className="w-full pt-4 mt-auto"
                   >
-                    <Button 
+                    <Button
                       asChild
                       className="w-full bg-[#6F5541] text-white hover:bg-[#A99074] transition-all duration-300"
                     >
-                      <a 
-                        href="https://wa.me/+60128853836" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                      >
+                      <a href="https://wa.me/+60128853836" target="_blank" rel="noopener noreferrer">
                         Book a Treatment
                       </a>
                     </Button>

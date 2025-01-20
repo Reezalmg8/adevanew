@@ -55,7 +55,7 @@ export function ServiceCard({
         <div className="space-y-4">
           
           <p className="text-[#A99074] text-sm italic">
-            *{therapeuticNote}
+            {therapeuticNote}
           </p>
         </div>
 
