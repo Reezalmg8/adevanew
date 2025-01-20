@@ -21,7 +21,7 @@ const collaborations: Collaboration[] = [
   {
     name: "Business Event Sarawak (BES)",
     description: "Partnering with BES, we bring wellness and aromatherapy to Sarawak's premier business events. Our services enhance attendee experience, promote relaxation, and boost engagement throughout conferences and corporate gatherings.",
-    image: "/images/gp5.jpg",
+    image: "/images/BES-1.jpg",
   },
   {
     name: "Voodoo Retreat",
