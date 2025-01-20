@@ -81,7 +81,7 @@ export function EnhancedHeader() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="relative flex items-center ml-1"
+            className="relative flex items-center ml-5"
           >
             <Link href="/" className="block">
               <div className="relative w-[150px] md:w-[200px] h-16 md:h-20">
