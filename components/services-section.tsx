@@ -33,7 +33,7 @@ const services: Category[] = [
       {
         name: 'Indian Head Massage Therapy',
         image: '/images/headmassage.png',
-        therapeuticNote: ' It helps relieve migraines, headaches, insomnia, and fatigue, alleviate stress and tension, stimulate hair growth, detoxify through lymphatic drainage, enhance relaxation, improve overall well-being, and facilitate better rest',
+        therapeuticNote: ' It helps relieve migraines, headaches, insomnia, and fatigue, alleviate stress and tension, stimulate hair growth, detoxify through lymphatic drainage, enhance relaxation, improve overall well-being, and facilitate better rest.',
         
       },
       
@@ -87,18 +87,18 @@ const services: Category[] = [
       {
         name: 'Lymphatic Drainage Therapy',
         image: '/images/lymp.jpeg',
-        therapeuticNote: 'A gentle, rhythmic massage technique designed to stimulate lymphatic circulation, aiding the removal of toxins, waste products, and excess fluids from the body. This soothing stimulation helps reduce swelling, relieve discomfort associated with lymphedema, and encourage relaxation'
+        therapeuticNote: 'A gentle, rhythmic massage technique designed to stimulate lymphatic circulation, aiding the removal of toxins, waste products, and excess fluids from the body. This soothing stimulation helps reduce swelling, relieve discomfort associated with lymphedema, and encourage relaxation.'
       },
       {
         name: 'Eco-Shape Treatment',
         image: '/images/ecoshape.jpeg',
-        therapeuticNote: ' Experience a natural, non-invasive body shaping method using sustainable tools.Eco-Shape improves skin appearance while toning and sculpting the figure, targeting cellulite and stubborn fat at different depths. Enhanced with aromatherapy oil for a smooth application without any damage. But keep in mind - its all about contouring, not weight loss!',
+        therapeuticNote: ' Experience a natural, non-invasive body shaping method using sustainable tools.Eco-Shape improves skin appearance while toning and sculpting the figure, targeting cellulite and stubborn fat at different depths. Enhanced with aromatherapy oil for a smooth application without any damage. But keep in mind - its all about contouring, not weight loss!.',
         
       },
       {
         name: 'Healing Spa Treatment',
         image: '/images/adevahealingspatreatment.png',
-        therapeuticNote: 'A personalized consultation to understand your specific needs,  a 10-minute Himalayan foot scrub to exfoliate and soften your feet , a 15-minute lymphatic dry brush treatment that will stimulate circulation,  detoxify the body, and make your skin feel soft,   soothing warm bath soak infused with magnesium flakes, synergy  aromatherapy oils, and fresh milk to relax and rejuvenate, Thermal therapy to ease muscle tension and promote relaxation, a 120-minute full-body massage of your choice:  Adeva Signature Massage or  Swedish Massage',
+        therapeuticNote: 'A personalized consultation to understand your specific needs,  a 10-minute Himalayan foot scrub to exfoliate and soften your feet , a 15-minute lymphatic dry brush treatment that will stimulate circulation,  detoxify the body, and make your skin feel soft,   soothing warm bath soak infused with magnesium flakes, synergy  aromatherapy oils, and fresh milk to relax and rejuvenate, Thermal therapy to ease muscle tension and promote relaxation, a 120-minute full-body massage of your choice:  Adeva Signature Massage or  Swedish Massage.',
        
       },
       
@@ -122,13 +122,13 @@ const services: Category[] = [
       {
         name: ' Lymphatic Dry Brush',
         image: '/images/treatment-2.jpg',
-        therapeuticNote: 'Lymphatic dry brushing is a technique that helps stimulate the lymphatic system, promoting better body detoxification and circulation. It can also exfoliate the skin, remove dead cells, and improve overall skin health',
+        therapeuticNote: 'Lymphatic dry brushing is a technique that helps stimulate the lymphatic system, promoting better body detoxification and circulation. It can also exfoliate the skin, remove dead cells, and improve overall skin health.',
        
       },
       {
         name: ' Foot Soak Therapy',
         image: '/images/product-6.jpg',
-        therapeuticNote: 'A magnesium flake, milk, and essential oil foot soak pampers your feet with relaxation, softer skin, and potential relief from aches and dryness, Recommended for tired feet, dry skin, stress, or occasional foot discomfort',
+        therapeuticNote: 'A magnesium flake, milk, and essential oil foot soak pampers your feet with relaxation, softer skin, and potential relief from aches and dryness, Recommended for tired feet, dry skin, stress, or occasional foot discomfort.',
         
       },
     ],

@@ -15,22 +15,22 @@ const diffuserBlends: Product[] = [
   {
     name: "FEM BALANCE",
     description: "Reduces stress and promotes hormonal balance, creating a calming atmosphere.",
-    image: "/placeholder.svg?height=300&width=300"
+    image: "/images/adeva-p3.jpg?height=300&width=300"
   },
   {
     name: "PEACE OF MIND",
     description: "Experience clarity and calm with this soothing aroma, leaving you refreshed and recharged.",
-    image: "/placeholder.svg?height=300&width=300"
+    image: "/images/adeva-p2.jpg?height=300&width=300"
   },
   {
     name: "SWEET DREAM",
     description: "Eases stress and creates a serene atmosphere for a peaceful night's rest.",
-    image: "/placeholder.svg?height=300&width=300"
+    image: "/images/adeva-p4.jpg?height=300&width=300"
   },
   {
     name: "PETRICHOR",
     description: "Let the serenity of nature fill your space with calming and peaceful blend.",
-    image: "/placeholder.svg?height=300&width=300"
+    image: "/images/adeva-p1.jpg?height=300&width=300"
   }
 ]
 

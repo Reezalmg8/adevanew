@@ -23,6 +23,8 @@ const navItems = [
             href: "/services/b2b",
             description: "Elevate your corporate events with our services",
           },
+          { name: "Product", href: "/product", description: "Explore our range of spa treatments" },
+
         ],
       },
     ],
