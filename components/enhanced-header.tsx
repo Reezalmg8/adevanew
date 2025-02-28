@@ -119,8 +119,8 @@ export function EnhancedHeader() {
                   href={item.href}
                   onClick={(e) => handleNavigation(e, item.href)}
                   className={`relative inline-flex items-center py-2 ${
-                    isScrolled ? "text-[#6F5541]" : "text-white"
-                  } hover:text-[#A99074] transition-colors duration-300`}
+                    isScrolled ? "text-[#6F5541]" : "text-[#6F5541]"
+                  } hover:text-[#A99074] transition-colors duration-100`}
                 >
                   <item.icon className="w-5 h-5 mr-2" />
                   {item.name}
