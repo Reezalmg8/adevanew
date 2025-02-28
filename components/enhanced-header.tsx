@@ -73,7 +73,7 @@ export function EnhancedHeader() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isMenuOpen || isScrolled ? "bg-white shadow-lg" : "bg-transparent"
+        isMenuOpen || isScrolled ? "bg-white shadow-lg" : "bg-white shadow-lg"
       }`}
     >
       <div className="container mx-auto pr-4 pl-0 max-w-[1400px]">
