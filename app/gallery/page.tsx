@@ -39,7 +39,7 @@ const galleryImages = {
 
 export default function GalleryPage() {
   const [lightboxOpen, setLightboxOpen] = useState(false)
-  const [currentImage, setCurrentImage] = useState({ src: '', alt: '', category: '', index: 0 })
+  const [currentImage, setCurrentImage] = useState({ src: "", alt: "", category: "", index: 0 })
 
   const openLightbox = (src: string, alt: string, category: string, index: number) => {
     setCurrentImage({ src, alt, category, index })
@@ -71,13 +71,22 @@ export default function GalleryPage() {
           <div className="container mx-auto px-4 py-16">
             <Tabs defaultValue="products" className="w-full">
               <TabsList className="w-full flex justify-center mb-8">
-                <TabsTrigger value="products" className="px-4 py-2 text-[#6F5541] hover:text-[#A99074] focus:outline-none">
+                <TabsTrigger
+                  value="products"
+                  className="px-4 py-2 text-[#6F5541] hover:text-[#A99074] focus:outline-none"
+                >
                   Products
                 </TabsTrigger>
-                <TabsTrigger value="treatments" className="px-4 py-2 text-[#6F5541] hover:text-[#A99074] focus:outline-none">
+                <TabsTrigger
+                  value="treatments"
+                  className="px-4 py-2 text-[#6F5541] hover:text-[#A99074] focus:outline-none"
+                >
                   Treatments
                 </TabsTrigger>
-                <TabsTrigger value="interior" className="px-4 py-2 text-[#6F5541] hover:text-[#A99074] focus:outline-none">
+                <TabsTrigger
+                  value="interior"
+                  className="px-4 py-2 text-[#6F5541] hover:text-[#A99074] focus:outline-none"
+                >
                   Interior
                 </TabsTrigger>
               </TabsList>
@@ -87,11 +96,10 @@ export default function GalleryPage() {
                     {images.map((image, index) => (
                       <div
                         key={index}
-                        className="relative aspect-square rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer"
-                        onClick={() => openLightbox(image.src, image.alt, category, index)}
+                        className="relative aspect-square rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
                       >
                         <Image
-                          src={image.src}
+                          src={image.src || "/placeholder.svg"}
                           alt={image.alt}
                           fill
                           className="object-cover hover:scale-105 transition-transform duration-300"
@@ -115,39 +123,7 @@ export default function GalleryPage() {
 
       <Footer />
 
-      <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
-        <DialogContent className="max-w-[90vw] max-h-[90vh] p-0 bg-transparent border-none">
-          <div className="relative w-full h-full">
-            <Image
-              src={currentImage.src}
-              alt={currentImage.alt}
-              fill
-              className="object-contain"
-            />
-            <button
-              onClick={prevImage}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 hover:bg-white transition-colors"
-              aria-label="Previous image"
-            >
-              <ChevronLeft className="w-6 h-6 text-[#6F5541]" />
-            </button>
-            <button
-              onClick={nextImage}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 hover:bg-white transition-colors"
-              aria-label="Next image"
-            >
-              <ChevronRight className="w-6 h-6 text-[#6F5541]" />
-            </button>
-            <button
-              onClick={closeLightbox}
-              className="absolute top-4 right-4 bg-white/80 rounded-full p-2 hover:bg-white transition-colors"
-              aria-label="Close lightbox"
-            >
-              <X className="w-6 h-6 text-[#6F5541]" />
-            </button>
-          </div>
-        </DialogContent>
-      </Dialog>
+      {/* Lightbox dialog removed */}
     </div>
   )
 }
