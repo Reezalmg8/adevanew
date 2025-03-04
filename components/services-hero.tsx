@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 export function ServicesHero() {
   return (
-    <div className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+    <div className="relative h-[70vh] flex items-center justify-center overflow-hidden">
       <Image
         src="/images/swedishholistic.png"
         alt="Spa Services"
@@ -16,7 +16,7 @@ export function ServicesHero() {
       <div className="absolute inset-0 bg-black opacity-40 z-10"></div>
       <div className="relative z-20 text-center text-white">
         <motion.h1 
-          className="text-5xl md:text-6xl font-serif mb-4"
+          className="text-5xl md:text-6xl font-serif mb-4 px-4 pt-30 mt-9 "
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}

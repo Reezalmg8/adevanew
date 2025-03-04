@@ -13,7 +13,7 @@ interface PageHeroProps {
 const heights = {
   full: "h-screen",
   large: "h-[90vh]",
-  medium: "h-[100vh]", // Increased from 60vh
+  medium: "h-[70vh]", // Increased from 60vh
 }
 
 export function PageHero({ title, subtitle, backgroundImage, height = "medium" }: PageHeroProps) {
@@ -27,7 +27,7 @@ export function PageHero({ title, subtitle, backgroundImage, height = "medium" }
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="relative text-center text-white px-4 pt-16" // Added pt-16 for top padding
+        className="relative text-center text-white px-4 pt-30 mt-8"
       >
         <motion.div
           initial={{ scaleX: 0 }}
