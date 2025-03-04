@@ -78,30 +78,29 @@ export function EnhancedHeader() {
     >
       <div className="container mx-auto pr-4 pl-0 max-w-[1400px]">
         <div className="flex items-center justify-between h-16 md:h-24">
-          {/* Logo */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="relative flex items-center ml-5"
-          >
-            <Link href="/" className="block">
-              <div className="relative w-[150px] md:w-[200px] h-16 md:h-20">
-                <Image
-                  src="/images/adevanewlogo.png"
-                  alt="Adeva Holistic Aromatherapy Spa"
-                  fill
-                  className="object-cover transition-all duration-300"
-                  style={{
-                    objectFit: "contain",
-                    transform: "scale(1.6)",
-                    transformOrigin: "right center",
-                  }}
-                  priority
-                />
-              </div>
-            </Link>
-          </motion.div>
+        <motion.div
+  initial={{ opacity: 0, scale: 0.9 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 0.5, ease: "easeOut" }}
+  className="relative flex items-center ml-0" // Changed from ml-11 to ml-0
+>
+  <Link href="/" className="block">
+    <div className="relative w-[150px] md:w-[200px] h-16 md:h-20">
+      <Image
+        src="/images/adevanewlogo.png"
+        alt="Adeva Holistic Aromatherapy Spa"
+        fill
+        className="object-cover transition-all duration-300"
+        style={{
+          objectFit: "contain",
+          transform: "scale(2.0) translateX(-1px)", // Added translateX
+          transformOrigin: "center center", // Changed from right center
+        }}
+        priority
+      />
+    </div>
+  </Link>
+</motion.div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center justify-center space-x-8">

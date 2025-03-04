@@ -95,7 +95,7 @@ export function Footer() {
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-[#6F5541]/20 text-center">
           <p className="text-sm">
-            © {new Date().getFullYear()} Adeva Holistic Aromatherapy Spa. All rights reserved.
+            © {new Date().getFullYear()} All Rights Reserved Adeva Holistic Aromatherapy Spa | Powered by thestudio
           </p>
         </div>
       </div>
