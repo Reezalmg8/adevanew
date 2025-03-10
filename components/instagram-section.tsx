@@ -48,7 +48,7 @@ export function InstagramSection() {
             className="bg-[#6F5541] text-white hover:bg-[#A99074]"
           >
             <a 
-              href="https://www.instagram.com/adevaspa" 
+              href="https://www.instagram.com/adeva.spa" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center"
