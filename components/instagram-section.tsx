@@ -46,7 +46,7 @@ export function InstagramSection() {
                   <div className="font-['Tenor_Sans'] text-4xl tracking-[0.2em] text-white text-center">
                     <span className="block md:inline">FOLLOW</span> <span className="block md:inline">US ON</span>
                   </div>
-                  <Instagram className="w-10 h-10 md:w-8 md:h-8 text-white mt-4 md:mt-0" />
+                  <Instagram className="w-8 h-8 md:w-8 md:h-8 text-white mt-4 md:mt-0" />
                 </div>
 
                 {/* Animated border */}
@@ -79,7 +79,17 @@ export function InstagramSection() {
           ))}
         </div>
 
-        
+        <div className="text-center">
+          <a
+            href="https://www.instagram.com/adeva.spa"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center text-[#6F5541] hover:text-[#A99074] transition-colors font-medium"
+          >
+            <Instagram className="w-5 h-5 mr-2" />
+            Follow Us on Instagram
+          </a>
+        </div>
       </div>
     </section>
   )
