@@ -44,9 +44,9 @@ export function InstagramSection() {
                 {/* Text container with flexbox for alignment */}
                 <div className="relative z-10 flex flex-col md:flex-row items-center justify-center md:space-x-4">
                   <div className="font-['Tenor_Sans'] text-4xl tracking-[0.2em] text-white text-center">
-                    <span className="block md:inline">FOLLOW</span> <span className="block md:inline">US ON</span>
+                    <span className="block md:inline">FOLLOW</span> <span className="block md:inline">US ON INSTAGRAM</span>
                   </div>
-                  <Instagram className="w-8 h-8 md:w-8 md:h-8 text-white mt-4 md:mt-0" />
+                  
                 </div>
 
                 {/* Animated border */}
