@@ -87,20 +87,33 @@ const treatmentBodyOils: Product[] = [
 
 function ProductCard({ product, productType }: { product: Product; productType: string }) { 
   // Add a condition to check if the product type is aromatherapy rollers or treatment body oils
-  const showComingSoon = productType === "aromatherapy-rollers" || productType === "treatment-body-oils"
+  const showComingSoon =  productType === "treatment-body-oils"
 
-  return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden relative">
+  return  (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className="bg-white rounded-lg shadow-md overflow-hidden relative"
+    >
       <div className="relative h-64">
         <Image src={product.image || "/placeholder.svg"} alt={product.name} fill className="object-cover" />
-        {/* Removed COMING SOON overlay */}
+        {showComingSoon && (
+          <div className="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center">
+            <div className="bg-[#6F5541] text-white px-4 py-2 rounded-md font-bold transform rotate-12 shadow-lg">
+              COMING SOON!
+            </div>
+          </div>
+        )} 
       </div>
       <div className="p-6">
         <h3 className="text-xl font-semibold text-[#6F5541] mb-2">{product.name}</h3>
         <p className="text-[#A99074]">{product.description}</p>
       </div>
-    </div>
-  );
+    </motion.div> 
+  ) 
+;
   
 } 
 
