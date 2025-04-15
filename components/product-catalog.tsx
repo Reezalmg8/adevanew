@@ -36,24 +36,24 @@ const diffuserBlends: Product[] = [
 
 const aromatherapyRollers: Product[] = [
   {
-    name: "CELESTIAL HARMONY",
-    description: "Spiritual Awareness and Grounding",
-    image: "/placeholder.svg?height=300&width=300",
+    name: "BEGINNING",
+    description: "Awaken Your Purpose, Find Your Clarity ",
+    image: "/images/rlr1.jpg?height=300&width=300",
   },
   {
-    name: "MOON CYCLE",
-    description: "Balances the Hormones and Regulates Menstrual Cycle",
-    image: "/placeholder.svg?height=300&width=300",
+    name: "COURAGE",
+    description: "Stand Tall in Your Inner Power",
+    image: "/images/rlr2.jpg?height=300&width=300",
   },
   {
-    name: "SLEEPEASE",
-    description: "Calming and Soothing for a Restful Sleep",
-    image: "/placeholder.svg?height=300&width=300",
+    name: "WEALTH",
+    description: "Attract Prosperity and Fulfillment",
+    image: "/images/rlr3.jpg?height=300&width=300",
   },
   {
-    name: "ZEN BREATHER",
-    description: "Supports Respiratory Health",
-    image: "/placeholder.svg?height=300&width=300",
+    name: "AWAKEN",
+    description: "Elevate Your Spirit, Expand Your Consciousness",
+    image: "/images/rlr4.jpg?height=300&width=300",
   },
 ]
 
@@ -85,35 +85,24 @@ const treatmentBodyOils: Product[] = [
   },
 ]
 
-function ProductCard({ product, productType }: { product: Product; productType: string }) {
+function ProductCard({ product, productType }: { product: Product; productType: string }) { 
   // Add a condition to check if the product type is aromatherapy rollers or treatment body oils
   const showComingSoon = productType === "aromatherapy-rollers" || productType === "treatment-body-oils"
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      className="bg-white rounded-lg shadow-md overflow-hidden relative"
-    >
+    <div className="bg-white rounded-lg shadow-md overflow-hidden relative">
       <div className="relative h-64">
         <Image src={product.image || "/placeholder.svg"} alt={product.name} fill className="object-cover" />
-        {showComingSoon && (
-          <div className="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center">
-            <div className="bg-[#6F5541] text-white px-4 py-2 rounded-md font-bold transform rotate-12 shadow-lg">
-              COMING SOON!
-            </div>
-          </div>
-        )}
+        {/* Removed COMING SOON overlay */}
       </div>
       <div className="p-6">
         <h3 className="text-xl font-semibold text-[#6F5541] mb-2">{product.name}</h3>
         <p className="text-[#A99074]">{product.description}</p>
       </div>
-    </motion.div>
-  )
-}
+    </div>
+  );
+  
+} 
 
 export function ProductCatalog() {
   return (
